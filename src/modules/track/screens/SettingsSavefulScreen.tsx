@@ -84,41 +84,10 @@ export default function SettingsSavefulScreen() {
   const navigation = useNavigation<TrackStackScreenProps<'Settings'>['navigation']>();
 
   const [mixpanel] = useContext(MixPanelContext);
-  //Uncomment when available
   const { data: userOnboarding } = useGetUserOnboardingQuery();
   const [updateUserOnboarding, { isLoading, isSuccess }] =
     useUpdateUserOnboardingMutation();
 
-  //Temporary MOCK Data
-// const [userOnboarding, setUserOnboarding] = useState<FormData | null>(null);
-// const [isLoading, setIsLoading] = useState(false);
-// const [isSuccess, setIsSuccess] = useState(false);
-
-// useEffect(() => {
-//   // Simulate fetching user onboarding data
-//   setTimeout(() => {
-//     setUserOnboarding({
-//       postcode: '123456',
-//       suburb: 'Mockville',
-//       noOfAdults: 2,
-//       noOfChildren: 1,
-//       trackSurveyDay: 'friday',
-//     });
-//   }, 500);
-// }, []);
-
-// const updateUserOnboarding = async (data: FormData) => {
-//   setIsLoading(true);
-//   return new Promise<FormData>((resolve) => {
-//     setTimeout(() => {
-//       setUserOnboarding(data); // simulate update
-//       setIsLoading(false);
-//       setIsSuccess(true);
-//       resolve(data);
-//     }, 1000);
-//   });
-// };
-//MOCK Data ends here
 
   const { sendAnalyticsEvent, sendFailedEventAnalytics } = useAnalytics();
 
@@ -187,13 +156,6 @@ export default function SettingsSavefulScreen() {
       setValue('noOfAdults', userOnboarding.no_of_people.adults);
       setValue('noOfChildren', userOnboarding.no_of_people.children);
       setValue('trackSurveyDay', userOnboarding.track_survey_day);
-
-      //MockValue
-      //setValue('postcode', userOnboarding.postcode);
-      // setValue('suburb', userOnboarding.suburb);
-      // setValue('noOfAdults', userOnboarding.noOfAdults);
-      // setValue('noOfChildren', userOnboarding.noOfChildren);
-      // setValue('trackSurveyDay', userOnboarding.trackSurveyDay);
 
     }
   }, [setValue, userOnboarding]);

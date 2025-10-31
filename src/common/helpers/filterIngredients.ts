@@ -52,20 +52,8 @@ const filterAllergiesByUserPreferences = (
       ),
     );
 
-    // const excludeAlternative = !item.components.some(dishes =>
-    //   dishes.requiredIngredients.some(alternatives =>
-    //     alternatives.alternativeIngredients.some(ingredients =>
-    //       ingredients.ingredient.some(
-    //         ingredient => allergies?.some(f => f === ingredient.id),
-    //       ),
-    //     ),
-    //   ),
-    // );
-
     return (
-      // excludeOptional &&
       excludeRecommended
-      // && excludeAlternative
     );
   });
 

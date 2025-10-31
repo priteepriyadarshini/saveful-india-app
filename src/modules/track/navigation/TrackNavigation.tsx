@@ -1,25 +1,27 @@
-import { Feather } from '@expo/vector-icons';
-import { CompositeScreenProps, NavigatorScreenParams } from '@react-navigation/native';
+import { Feather } from "@expo/vector-icons";
+import {
+  CompositeScreenProps,
+  NavigatorScreenParams,
+} from "@react-navigation/native";
 import {
   createNativeStackNavigator,
   NativeStackScreenProps,
-} from '@react-navigation/native-stack';
-import tw from '../../../common/tailwind';
-import { RootNavigationStackParams } from '../../navigation/navigator/root/RootNavigator';
-import ChangePasswordScreen from '../../../modules/track/screens/ChangePasswordScreen';
-import ProfileHistoryScreen from '../../../modules/track/screens/ProfileHistory';
-import ProfileScreen from '../../../modules/track/screens/ProfileScreen';
-import SettingsAccountsScreen from '../../../modules/track/screens/SettingsAccountsScreen';
-import SettingsDetailsOnboardingDietaryScreen from '../../../modules/track/screens/SettingsDetailsOnboardingDietaryScreen';
-import SettingsDetailsScreen from '../../../modules/track/screens/SettingsDetailsScreen';
-import SettingsNotificationsScreen from '../../../modules/track/screens/SettingsNotificationsScreen';
-import SettingsSavefulScreen from '../../../modules/track/screens/SettingsSavefulScreen';
-import SettingsScreen from '../../../modules/track/screens/SettingsScreen';
-import TrackScreen from '../screens/TrackScreen';
-import React from 'react';
-import { Pressable, View } from 'react-native';
-import { SurveyStackParamList } from './SurveyNavigator';
-
+} from "@react-navigation/native-stack";
+import tw from "../../../common/tailwind";
+import { RootNavigationStackParams } from "../../navigation/navigator/root/RootNavigator";
+import ChangePasswordScreen from "../../../modules/track/screens/ChangePasswordScreen";
+import ProfileScreen from "../../../modules/track/screens/ProfileScreen";
+import SettingsAccountsScreen from "../../../modules/track/screens/SettingsAccountsScreen";
+import SettingsDetailsOnboardingDietaryScreen from "../../../modules/track/screens/SettingsDetailsOnboardingDietaryScreen";
+import SettingsDetailsScreen from "../../../modules/track/screens/SettingsDetailsScreen";
+import SettingsNotificationsScreen from "../../../modules/track/screens/SettingsNotificationsScreen";
+import SettingsSavefulScreen from "../../../modules/track/screens/SettingsSavefulScreen";
+import SettingsScreen from "../../../modules/track/screens/SettingsScreen";
+import TrackScreen from "../screens/TrackScreen";
+import React from "react";
+import { Pressable, View } from "react-native";
+import { SurveyStackParamList } from "./SurveyNavigator";
+import PrepScreen from "../../prep/screens/PrepScreen";
 
 export type TrackStackParamList = {
   TrackHome: undefined;
@@ -32,17 +34,18 @@ export type TrackStackParamList = {
   SettingsAccountsQantasLink: { hideRibbon?: string };
   SettingsDetailsOnboardingDietary: undefined;
   Profile: undefined;
-  ProfileHistory: { id: string };
   ChangePassword: undefined;
   PostMake: { id: string };
   Survey: NavigatorScreenParams<SurveyStackParamList>;
   Results: undefined;
+
+  PrepDetail: { recipe: any };
 };
 
 export type TrackStackScreenProps<Screen extends keyof TrackStackParamList> =
   CompositeScreenProps<
     NativeStackScreenProps<TrackStackParamList, Screen>,
-    RootNavigationStackParams<'Track'>
+    RootNavigationStackParams<"Track">
   >;
 
 const NavigationStack = createNativeStackNavigator<TrackStackParamList>();
@@ -52,13 +55,13 @@ export default function TrackStackNavigator() {
     <NavigationStack.Navigator
       screenOptions={({ navigation }) => ({
         detachPreviousScreen: !navigation.isFocused(),
-        headerTintColor: tw.color('gray-900'),
+        headerTintColor: tw.color("gray-900"),
       })}
     >
       <NavigationStack.Screen
         name="TrackHome"
         component={TrackScreen}
-        options={{ title: 'Track', headerShown: false }}
+        options={{ title: "Track", headerShown: false }}
       />
       <NavigationStack.Screen
         name="Profile"
@@ -68,11 +71,9 @@ export default function TrackStackNavigator() {
         })}
       />
       <NavigationStack.Screen
-        name="ProfileHistory"
-        component={ProfileHistoryScreen}
-        options={() => ({
-          headerShown: false,
-        })}
+        name="PrepDetail"
+        component={PrepScreen}
+        options={{ title: "Make", headerShown: false }}
       />
       <NavigationStack.Screen
         name="Settings"
@@ -113,7 +114,7 @@ export default function TrackStackNavigator() {
         name="SettingsDetailsOnboardingDietary"
         component={SettingsDetailsOnboardingDietaryScreen}
         options={({ navigation }) => ({
-          title: '',
+          title: "",
           headerTransparent: true,
           headerBackButtonMenuEnabled: false,
           headerBackTitleVisible: false,
@@ -133,7 +134,7 @@ export default function TrackStackNavigator() {
         name="ChangePassword"
         component={ChangePasswordScreen}
         options={({ navigation }) => ({
-          title: '',
+          title: "",
           headerTransparent: true,
           headerBackButtonMenuEnabled: false,
           headerBackTitleVisible: false,
@@ -147,7 +148,7 @@ export default function TrackStackNavigator() {
               <Feather name="x" color="black" size={20} />
             </Pressable>
           ),
-          presentation: 'modal',
+          presentation: "modal",
         })}
       />
     </NavigationStack.Navigator>

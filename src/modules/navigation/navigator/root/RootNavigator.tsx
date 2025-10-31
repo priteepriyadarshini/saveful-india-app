@@ -28,7 +28,7 @@ function RootNavigator() {
         })}
       />
       <RootNavigationTabBar.Screen
-        name="Make" // CAPITAL "M"
+        name="Make" 
         component={MakeStackNavigator} 
         options={{ headerShown: false }}
       />

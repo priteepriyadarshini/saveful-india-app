@@ -16,7 +16,6 @@ import { useCurentRoute } from "../../route/context/CurrentRouteContext";
 import FocusAwareStatusBar from "../../../common/components/FocusAwareStatusBar";
 import FeedSearchBarHeader from "../components/FeedSearchBarHeader";
 import CommunityGroups from "../components/CommunityGroups";
-import Staples from "../components/Staples";
 import Partners from "../components/Partners";
 import FeedSaved from "../components/FeedSaved";
 import IngredientsCarousel from "../components/IngredientsCarousel";
@@ -45,7 +44,6 @@ export default function FeedScreen() {
         action: mixpanelEventName.searchbarPressed,
       },
     });  const onSearchTapped = useCallback(() => {
-    //linkTo('/Ingredients');
     navigation.navigate('Ingredients');
   }, [navigation, newCurrentRoute, sendAnalyticsEvent]);
 
@@ -79,8 +77,7 @@ export default function FeedScreen() {
           />
 
           <View style={tw`-mb-12 mt-10`}>
-            <FeedSaved
-            />
+            <FeedSaved />
           </View>
 
         </SafeAreaView>
@@ -94,10 +91,6 @@ export default function FeedScreen() {
           {/* <QantasBlock /> */}
 
           <MealsCarousel />
-
-          {/* <Video />  */}
-
-          {/* <Staples /> */}
 
           <Partners />
 

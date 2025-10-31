@@ -5,9 +5,7 @@ import { FeedStackParamList } from "../../../feed/navigation/FeedNavigation";
 export type RootStackParamList = {
   //ExampleHome: undefined;
   //Developer: undefined;
-  //Feed: undefined;
-  Feed: { screen?: keyof FeedStackParamList };
-  //Make: undefined;
+  Feed: NavigatorScreenParams<FeedStackParamList>;
   Make: NavigatorScreenParams<MakeStackParamList>;
   Hack: undefined;
   Track: undefined;

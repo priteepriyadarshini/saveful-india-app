@@ -6,18 +6,26 @@ import {
 } from "@react-navigation/native-stack";
 import tw from "../../../common/tailwind";
 import IngredientDetailScreen from "../../../modules/ingredients/screens/IngredientDetailScreen";
-import IngredientsResultsScreen from "../../../modules/ingredients/screens/IngredientsResults";
 import IngredientsScreen from "../../../modules/ingredients/screens/IngredientsScreen";
 import { InitialNavigationStackParams } from "../../navigation/navigator/InitialNavigator";
 import React from "react";
 import { Pressable } from "react-native";
 import PrepScreen from "../../prep/screens/PrepScreen";
+import IngredientsResultsScreen from "../screens/IngredientsResultsScreen";
+import { Recipe } from "../../make/components/MealsList";
+
+export interface Ingredient {
+  id: number;
+  name: string;
+  imageUrl?: string | null;
+}
 
 export type IngredientsStackParamList = {
   IngredientsHome: undefined;
-  IngredientDetail: { id: string };
-  IngredientsResults: { selectedIngredients: { id: string; title: string }[] };
-  PrepDetail: { slug: string };
+  //IngredientDetail: { id: string };
+  IngredientDetail: {ingredient: Ingredient};
+  IngredientsResults: { selectedIngredients: { id: number; name: string }[] }; // 
+  PrepDetail: { recipe: any };
 };
 
 export type IngredientsStackScreenProps<
@@ -74,6 +82,7 @@ export default function IngredientsStackNavigator() {
         component={PrepScreen}
         options={{ title: "Recipe", headerShown: false }}
       />
+
     </NavigationStack.Navigator>
   );
 }

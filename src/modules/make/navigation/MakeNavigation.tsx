@@ -13,19 +13,17 @@ import MakeItScreen from "../screens/MakeItScreen";
 
 export type MakeStackParamList = {
   MakeHome: undefined;
-  PrepDetail: { slug: string };
+  PrepDetail: {recipe:any};  
   FrameworkNotFound: undefined;
   MakeIt: {
-    id: string;
-    variant: string;
-    ingredients: {
-      id: string;
-      title: string;
-      quantity: string;
-      preparation?: string;
-    }[];
-    mealId: string;
-  };
+  steps: {
+    id: number;
+    order: number;
+    content: string;
+  }[];
+  recipeName: string;
+};
+
 };
 
 export type MakeStackScreenProps<Screen extends keyof MakeStackParamList> =

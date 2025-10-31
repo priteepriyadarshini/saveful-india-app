@@ -28,7 +28,6 @@ import { mixpanelEventName } from '../../analytics/analytics';
 
 import TrackScreenHeader from '../components/TrackScreenHeader';
 import TrackTabChart from '../components/TrackTabChart';
-import WeeklySurveyCarousel from '../components/WeeklySurveyCarousel';
 import FaqContainer from '../components/FaqContainer';
 import getWeekNumber from '../helpers/getWeekNumber';
 import { TIPSOFTHEWEEK } from '../data/data';
@@ -85,10 +84,7 @@ export default function TrackScreen() {
         </View>
 
         <View style={tw.style('bg-creme pt-20')}>
-          <View style={tw.style('pt-15 mb-8')}>
-            <WeeklySurveyCarousel />
-          </View>
-
+          
           <View style={tw.style('px-5 pb-8')}>
             {data.map((item, index) => (
               <DebouncedPressable

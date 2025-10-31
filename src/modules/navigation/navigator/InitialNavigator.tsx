@@ -28,17 +28,22 @@ export type InitialStackParamList = {
   Root: NavigatorScreenParams<RootStackParamList> | undefined;
   Ingredients: NavigatorScreenParams<IngredientsStackParamList> | undefined;
   Survey: NavigatorScreenParams<SurveyStackParamList> | undefined;
+  // MakeIt: {
+  //   id: string;
+  //   variant: string;
+  //   ingredients: {
+  //     id: string;
+  //     title: string;
+  //     quantity: string;
+  //     preparation?: string;
+  //   }[];
+  //   mealId: string;
+  // };
   MakeIt: {
-    id: string;
-    variant: string;
-    ingredients: {
-      id: string;
-      title: string;
-      quantity: string;
-      preparation?: string;
-    }[];
-    mealId: string;
-  };
+  steps: { id: number; order: number; content: string }[];
+  recipeName: string;
+};
+
   HackVideo: { videoString: string }; // id: string
 };
 
@@ -72,8 +77,8 @@ function InitialNavigator() {
       <InitialNavigationStack.Screen name="Root" component={RootNavigator} />
       <InitialNavigationStack.Screen name="Ingredients" component={IngredientsStackNavigator}/>
       <InitialNavigationStack.Screen name="Survey" component={SurveyStackNavigator} />
-      <InitialNavigationStack.Screen name="MakeIt"component={MakeItScreen}options={{title: 'Make it', headerShown: false}}/>
-      <InitialNavigationStack.Screen name="HackVideo" component={HackVideoScreen}options={{ title: 'Video', headerShown: false, presentation: 'fullScreenModal', animation: 'fade', }} />
+      <InitialNavigationStack.Screen name="MakeIt" component={MakeItScreen} options={{title: 'Make it', headerShown: false}}/>
+      <InitialNavigationStack.Screen name="HackVideo" component={HackVideoScreen} options={{ title: 'Video', headerShown: false, presentation: 'fullScreenModal', animation: 'fade', }} />
     </InitialNavigationStack.Navigator>
   );
 }

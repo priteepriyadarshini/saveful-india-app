@@ -22,7 +22,7 @@ import {
 } from '../../../modules/intro/data/onboarding';
 import { MixPanelContext } from '../../../modules/mixpanel/context/MixpanelContext';
 import useNotifications from '../../../modules/notifications/hooks/useNotifications';
-import ControlledSurveyCounter from '../../../modules/track/components/SurveyCounter';
+
 import React, {
   useCallback,
   useContext,
@@ -46,6 +46,7 @@ import { KeyboardAwareScrollView } from 'react-native-keyboard-aware-scroll-view
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { labelLarge } from '../../../theme/typography';
 import * as Yup from 'yup';
+import ControlledSurveyCounter from '../../track/components/SurveyCounter';
 
 const schema = Yup.object({
   postcode: Yup.string().required('Please enter your postcode'),
